@@ -1,0 +1,93 @@
+.grid-motion-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.grid-motion-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    padding: 16px;
+}
+
+.grid-motion-row {
+    display: flex;
+    gap: 16px;
+    will-change: transform;
+}
+
+.grid-motion-item {
+    position: relative;
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-motion-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.grid-motion-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-motion-item-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: rgba(240, 234, 214, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 16px;
+    text-align: center;
+}
+
+.grid-motion-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.grid-motion-gradient-top {
+    background: linear-gradient(to bottom, var(--gradient-color, #050505) 0%, transparent 20%);
+}
+
+.grid-motion-gradient-bottom {
+    background: linear-gradient(to top, var(--gradient-color, #050505) 0%, transparent 20%);
+}
+
+.grid-motion-gradient-left {
+    background: linear-gradient(to right, var(--gradient-color, #050505) 0%, transparent 15%);
+}
+
+.grid-motion-gradient-right {
+    background: linear-gradient(to left, var(--gradient-color, #050505) 0%, transparent 15%);
+}
+
+@media (max-width: 768px) {
+    .grid-motion-item {
+        width: 200px;
+        height: 150px;
+    }
+
+    .grid-motion-item-text {
+        font-size: 1.2rem;
+    }
+}

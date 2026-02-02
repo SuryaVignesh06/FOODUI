@@ -1,0 +1,303 @@
+/* ULTRA REALISTIC Food Smoke - Random Organic Motion */
+
+/* Multiple unique rise paths for randomness */
+@keyframes smokeRise1 {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 0.85;
+    }
+
+    25% {
+        transform: translateY(-50px) translateX(15px) rotate(5deg) scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-110px) translateX(-10px) rotate(-3deg) scale(1.15);
+        opacity: 0.5;
+    }
+
+    75% {
+        transform: translateY(-180px) translateX(20px) rotate(8deg) scale(1.3);
+        opacity: 0.25;
+    }
+
+    100% {
+        transform: translateY(-280px) translateX(-5px) rotate(0deg) scale(1.6);
+        opacity: 0;
+    }
+}
+
+@keyframes smokeRise2 {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.7);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 0.8;
+    }
+
+    30% {
+        transform: translateY(-60px) translateX(-20px) rotate(-8deg) scale(0.95);
+        opacity: 0.65;
+    }
+
+    55% {
+        transform: translateY(-130px) translateX(12px) rotate(5deg) scale(1.1);
+        opacity: 0.45;
+    }
+
+    80% {
+        transform: translateY(-210px) translateX(-15px) rotate(-5deg) scale(1.35);
+        opacity: 0.18;
+    }
+
+    100% {
+        transform: translateY(-300px) translateX(8px) rotate(2deg) scale(1.7);
+        opacity: 0;
+    }
+}
+
+@keyframes smokeRise3 {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.9);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.75;
+    }
+
+    20% {
+        transform: translateY(-40px) translateX(8px) rotate(3deg) scale(1.05);
+        opacity: 0.68;
+    }
+
+    45% {
+        transform: translateY(-100px) translateX(-18px) rotate(-6deg) scale(1.2);
+        opacity: 0.5;
+    }
+
+    70% {
+        transform: translateY(-170px) translateX(25px) rotate(10deg) scale(1.4);
+        opacity: 0.22;
+    }
+
+    100% {
+        transform: translateY(-260px) translateX(-8px) rotate(-2deg) scale(1.65);
+        opacity: 0;
+    }
+}
+
+@keyframes smokeRise4 {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.75);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.82;
+    }
+
+    35% {
+        transform: translateY(-70px) translateX(-12px) rotate(-4deg) scale(1.1);
+        opacity: 0.6;
+    }
+
+    60% {
+        transform: translateY(-140px) translateX(18px) rotate(7deg) scale(1.25);
+        opacity: 0.38;
+    }
+
+    85% {
+        transform: translateY(-220px) translateX(-20px) rotate(-8deg) scale(1.5);
+        opacity: 0.12;
+    }
+
+    100% {
+        transform: translateY(-290px) translateX(5px) rotate(0deg) scale(1.75);
+        opacity: 0;
+    }
+}
+
+/* Organic swirl motion */
+@keyframes swirl {
+
+    0%,
+    100% {
+        transform: translateX(0) skewX(0deg);
+    }
+
+    20% {
+        transform: translateX(8px) skewX(3deg);
+    }
+
+    40% {
+        transform: translateX(-12px) skewX(-4deg);
+    }
+
+    60% {
+        transform: translateX(15px) skewX(5deg);
+    }
+
+    80% {
+        transform: translateX(-8px) skewX(-2deg);
+    }
+}
+
+/* Pulsing opacity for breathing effect */
+@keyframes breathe {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.steam-container {
+    position: absolute;
+    pointer-events: none;
+    z-index: 60;
+    overflow: visible;
+}
+
+/* Steam wisp - REALISTIC with varied animations */
+.steam-wisp {
+    position: absolute;
+    width: 10px;
+    height: 150px;
+    background: linear-gradient(to top,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.9) 15%,
+            rgba(255, 255, 255, 0.7) 35%,
+            rgba(255, 255, 255, 0.45) 55%,
+            rgba(255, 255, 255, 0.2) 75%,
+            rgba(255, 255, 255, 0) 100%);
+    border-radius: 50%;
+    filter: blur(5px);
+    opacity: 0;
+}
+
+/* Each wisp gets unique animation for randomness */
+.steam-wisp.w1 {
+    animation: smokeRise1 3.5s ease-out infinite;
+    height: 140px;
+    left: 18%;
+}
+
+.steam-wisp.w2 {
+    animation: smokeRise2 4.2s ease-out infinite 0.4s;
+    height: 170px;
+    left: 32%;
+}
+
+.steam-wisp.w3 {
+    animation: smokeRise3 3.8s ease-out infinite 0.9s;
+    height: 155px;
+    left: 48%;
+}
+
+.steam-wisp.w4 {
+    animation: smokeRise4 4.5s ease-out infinite 1.3s;
+    height: 165px;
+    left: 25%;
+}
+
+.steam-wisp.w5 {
+    animation: smokeRise1 4s ease-out infinite 0.2s;
+    height: 135px;
+    left: 42%;
+}
+
+.steam-wisp.w6 {
+    animation: smokeRise3 3.6s ease-out infinite 0.7s;
+    height: 180px;
+    left: 38%;
+}
+
+.steam-wisp.w7 {
+    animation: smokeRise2 4.8s ease-out infinite 1.6s;
+    height: 150px;
+    left: 28%;
+}
+
+.steam-wisp.w8 {
+    animation: smokeRise4 3.9s ease-out infinite 0.5s;
+    height: 160px;
+    left: 52%;
+}
+
+/* Steam clouds with combined animations */
+.steam-cloud {
+    position: absolute;
+    width: 110px;
+    height: 120px;
+    background: radial-gradient(ellipse at center,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.35) 30%,
+            rgba(255, 255, 255, 0.12) 55%,
+            transparent 75%);
+    border-radius: 50%;
+    filter: blur(10px);
+    opacity: 0;
+}
+
+.steam-cloud.c1 {
+    animation: smokeRise1 4.5s ease-out infinite 0.3s, swirl 8s ease-in-out infinite;
+    left: 22%;
+    width: 100px;
+}
+
+.steam-cloud.c2 {
+    animation: smokeRise2 5s ease-out infinite 1s, swirl 9s ease-in-out infinite 1s;
+    left: 40%;
+    width: 130px;
+    height: 140px;
+}
+
+.steam-cloud.c3 {
+    animation: smokeRise3 4.2s ease-out infinite 1.8s, swirl 7s ease-in-out infinite 0.5s;
+    left: 55%;
+    width: 105px;
+}
+
+.steam-cloud.c4 {
+    animation: smokeRise4 4.8s ease-out infinite 0.6s, swirl 10s ease-in-out infinite 1.5s;
+    left: 35%;
+    width: 120px;
+    height: 130px;
+}
+
+/* THICK smoke - extra visible */
+.steam-wisp.thick {
+    width: 14px;
+    filter: blur(6px);
+    background: linear-gradient(to top,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.95) 12%,
+            rgba(255, 255, 255, 0.75) 30%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.25) 70%,
+            rgba(255, 255, 255, 0) 100%);
+}
+
+/* THIN delicate wisps */
+.steam-wisp.thin {
+    width: 6px;
+    filter: blur(4px);
+    background: linear-gradient(to top,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.75) 20%,
+            rgba(255, 255, 255, 0.5) 45%,
+            rgba(255, 255, 255, 0.2) 70%,
+            rgba(255, 255, 255, 0) 100%);
+}

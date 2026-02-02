@@ -1,0 +1,212 @@
+.sphere-root {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    background: transparent;
+    --radius: 600px;
+    --viewer-pad: 32px;
+    --overlay-blur-color: #060010;
+    --tile-radius: 30px;
+    --enlarge-radius: 32px;
+    --image-filter: grayscale(1);
+    --segments-x: 35;
+    --segments-y: 35;
+}
+
+.sphere-main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: calc(var(--radius) * 2.5);
+    perspective-origin: center center;
+}
+
+.stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+}
+
+.sphere {
+    position: absolute;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    transform: translateZ(calc(var(--radius) * -1)) rotateX(0deg) rotateY(0deg);
+    transition: transform 0.05s ease-out;
+}
+
+.item {
+    --unit: calc(360deg / var(--segments-x) / 2);
+    --rotY: calc(var(--unit) * (var(--offset-x) + (var(--item-size-x) - 1) / 2));
+    --rotX: calc(var(--unit) * (var(--offset-y) - (var(--item-size-y) - 1) / 2));
+
+    position: absolute;
+    transform-style: preserve-3d;
+    transform:
+        rotateY(var(--rotY)) rotateX(calc(var(--rotX) * -1)) translateZ(var(--radius)) rotateX(var(--rot-x-delta, 0deg)) rotateY(var(--rot-y-delta, 0deg));
+    transition: transform 0.3s ease-out;
+}
+
+.item__image {
+    --tile-w: calc(var(--radius) * 0.18 * var(--item-size-x, 2));
+    --tile-h: calc(var(--radius) * 0.18 * var(--item-size-y, 2));
+
+    position: relative;
+    width: var(--tile-w);
+    height: var(--tile-h);
+    border-radius: var(--tile-radius);
+    overflow: hidden;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item__image:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: var(--image-filter);
+    transition: filter 0.4s ease;
+    pointer-events: none;
+    user-select: none;
+}
+
+.item__image:hover img {
+    filter: none;
+}
+
+.item__image--reference {
+    pointer-events: none;
+}
+
+/* Overlays */
+.overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center,
+            transparent 30%,
+            var(--overlay-blur-color) 100%);
+    z-index: 10;
+}
+
+.overlay--blur {
+    background: radial-gradient(ellipse at center,
+            transparent 40%,
+            var(--overlay-blur-color) 85%);
+    opacity: 0.7;
+}
+
+/* Edge fades */
+.edge-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 120px;
+    pointer-events: none;
+    z-index: 11;
+}
+
+.edge-fade--top {
+    top: 0;
+    background: linear-gradient(to bottom, var(--overlay-blur-color), transparent);
+}
+
+.edge-fade--bottom {
+    bottom: 0;
+    background: linear-gradient(to top, var(--overlay-blur-color), transparent);
+}
+
+/* Viewer */
+.viewer {
+    position: absolute;
+    inset: var(--viewer-pad);
+    pointer-events: none;
+    z-index: 20;
+}
+
+.scrim {
+    position: absolute;
+    inset: calc(var(--viewer-pad) * -1);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 25;
+}
+
+[data-enlarging="true"] .scrim {
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(350px, 80vw);
+    height: min(450px, 70vh);
+    pointer-events: none;
+    z-index: 28;
+}
+
+/* Enlarged image */
+.enlarge {
+    position: absolute;
+    border-radius: var(--enlarge-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 30;
+}
+
+.enlarge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.enlarge-closing {
+    pointer-events: none;
+}
+
+/* Scroll lock */
+.dg-scroll-lock {
+    overflow: hidden !important;
+    touch-action: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sphere-root {
+        min-height: 400px;
+    }
+
+    .item__image {
+        --tile-w: calc(var(--radius) * 0.15 * var(--item-size-x, 2));
+        --tile-h: calc(var(--radius) * 0.15 * var(--item-size-y, 2));
+    }
+
+    .frame {
+        width: min(280px, 85vw);
+        height: min(380px, 65vh);
+    }
+}

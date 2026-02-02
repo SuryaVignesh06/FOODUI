@@ -1,0 +1,12 @@
+.smoke-shader-container {
+    position: absolute;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.smoke-shader-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}

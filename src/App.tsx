@@ -48,7 +48,7 @@ const chefItems = [
     { image: 'https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=500&h=600&fit=crop', name: 'Layla', role: 'Sous Chef' },
     { image: 'https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=500&h=600&fit=crop', name: 'Omar', role: 'Pastry Chef' },
     { image: 'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=500&h=600&fit=crop', name: 'Yousef', role: 'Head Grill' },
-    { image: 'https://images.unsplash.com/photo-1574966739987-65e38db0f7d2?w=500&h=600&fit=crop', name: 'Samira', role: 'Kitchen Manager' }
+    { image: 'https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=500&h=600&fit=crop', name: 'Samira', role: 'Kitchen Manager' }
 ];
 
 // Section animation variants

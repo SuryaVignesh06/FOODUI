@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import './FlowingMenu.css';
 
@@ -155,15 +156,15 @@ function MenuItem({
 
     return (
         <div className="menu__item" ref={itemRef} style={{ borderColor }}>
-            <a
+            <Link
                 className="menu__item-link"
-                href={link}
+                to={link}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 style={{ color: textColor }}
             >
                 {text}
-            </a>
+            </Link>
             <div className="marquee" ref={marqueeRef} style={{ backgroundColor: marqueeBgColor }}>
                 <div className="marquee__inner-wrap">
                     <div className="marquee__inner" ref={marqueeInnerRef} aria-hidden="true">
